@@ -10,13 +10,15 @@
 <div th:replace="fragments/navbar :: menu"></div>
 
 <h1>Historial de Empleados</h1>
+<h2>Para usar la busqueda, escriba lo que desea encontrar por nombre, apellido, puesto o departamento y
+  pulse Enter, si desea eliminar los filtros no escriba nada y pulse Enter</h2>
 
 <form action="/history/buscar" method="post">
   <input type="text" name="searchField" placeholder="Buscar por nombre, apellido, puesto o departamento" />
   <button type="submit">Buscar</button>
 </form>
 
-<table>
+<table border="1">
   <thead>
   <tr>
     <th>Empleado</th>
@@ -31,8 +33,25 @@
     <td th:text="${jobHistory.employee.firstName} + ' ' + ${jobHistory.employee.lastName}"></td>
     <td th:text="${jobHistory.job.jobTitle}"></td>
     <td th:text="${jobHistory.department.departmentName}"></td>
+
+    <!-- Si los valores se imprimen de esta forma no se logra apreciar bien la fecha, aparece así dd/MM/yyyyTHH:mm
     <td th:text="${jobHistory.id.startDate}"></td>
     <td th:text="${jobHistory.endDate}"></td>
+    -->
+
+    <!--
+    <td th:text="${jobHistory.id.startDate?.format(T(java.time.format.DateTimeFormatter).ofPattern('dd/MM/yyyy HH:mm'))}"></td>
+    <td th:text="${jobHistory.endDate?.format(T(java.time.format.DateTimeFormatter).ofPattern('dd/MM/yyyy HH:mm'))}"></td>
+
+    <td th:text="${#temporals.format(e.startDate, 'dd/MM/yyyy HH:mm')}"></td>
+    <td th:text="${#temporals.format(e.endDate, 'dd/MM/yyyy HH:mm')}"></td>
+    -->
+
+    <td th:text="${#temporals.format(jobHistory.id.startDate, 'dd/MM/yyyy HH:mm')}"></td>
+    <td th:text="${#temporals.format(jobHistory.endDate, 'dd/MM/yyyy HH:mm')}"></td>
+
+
+
   </tr>
   </tbody>
 </table>

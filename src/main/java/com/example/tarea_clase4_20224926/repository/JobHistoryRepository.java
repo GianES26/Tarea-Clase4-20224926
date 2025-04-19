@@ -10,7 +10,6 @@ import java.util.List;
 @Repository
 public interface JobHistoryRepository extends JpaRepository<JobHistory, JobHistoryId> {
 
-    // Método para buscar el historial por nombre, apellido, puesto o departamento
     List<JobHistory> findByEmployeeFirstNameContainingOrEmployeeLastNameContainingOrJobJobTitleContainingOrDepartmentDepartmentNameContaining(
             String firstName, String lastName, String jobTitle, String departmentName);
 }

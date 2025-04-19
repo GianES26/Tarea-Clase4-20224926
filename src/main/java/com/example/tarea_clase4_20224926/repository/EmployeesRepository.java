@@ -10,14 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface EmployeesRepository extends JpaRepository<Employees, Integer> {
-/*
-    @Query("SELECT e FROM Employees e " +
-            "WHERE LOWER(e.firstName) LIKE LOWER(CONCAT('%', :search, '%')) " +
-            "   OR LOWER(e.lastName) LIKE LOWER(CONCAT('%', :search, '%')) " +
-            "   OR LOWER(e.job.jobTitle) LIKE LOWER(CONCAT('%', :search, '%')) " +
-            "   OR LOWER(e.department.departmentName) LIKE LOWER(CONCAT('%', :search, '%')) " +
-            "   OR LOWER(e.department.location.city) LIKE LOWER(CONCAT('%', :search, '%'))")
-    List<Employees> searchEmployees(String search);*/
 
     List<Employees> findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCaseOrJob_JobTitleContainingIgnoreCaseOrDepartment_DepartmentNameContainingIgnoreCaseOrDepartment_Location_CityContainingIgnoreCase(String search1, String search2, String search3, String search4, String search5);
 

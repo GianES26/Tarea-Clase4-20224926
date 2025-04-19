@@ -66,9 +66,4 @@ public class Departments {
     @JoinColumn(name = "location_id")
     private Locations location;
 
-    // Opcional: si luego quieres acceder a los empleados de este departamento
-    /*
-    @OneToMany(mappedBy = "department")
-    private List<Employees> employees;
-    */
 }

@@ -79,7 +79,7 @@ public class EmployeeController {
 
     @PostMapping("/guardar")
     public String guardarEmpleado(Employees empleado) {
-        // Verifica si hireDate viene nulo, asígnale LocalDateTime.now()
+        // Creamos el hire_date, es un parametro not null de la tabla employee
         if (empleado.getHireDate() == null) {
             empleado.setHireDate(LocalDateTime.now());
         }

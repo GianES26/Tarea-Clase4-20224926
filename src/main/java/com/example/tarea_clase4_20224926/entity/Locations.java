@@ -1,41 +1,4 @@
-/* package com.example.tarea_clase4_20224926.entity;
 
-
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
-@Entity
-@Table(name = "jugador")
-public class Locations {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idJugador", nullable = false)
-    private Integer id;
-
-    @Column(name = "nombre", length = 45)
-    private String nombre;
-
-    @Column(name = "edad", length = 45)
-    private String edad;
-
-    @Column(name = "posicion", length = 45)
-    private String posicion;
-
-    @Column(name = "club", length = 45)
-    private String club;
-
-
-    @ManyToOne
-    @JoinColumn(name = "sn_idSeleccion")
-    private Seleccion seleccion;
-
-}
-
-*/
 
 package com.example.tarea_clase4_20224926.entity;
 
@@ -69,10 +32,6 @@ public class Locations {
     @JoinColumn(name = "country_id")
     private Countries country;
 
-    // Si más adelante deseas ver todos los departamentos en esta ubicación:
-    /*
-    @OneToMany(mappedBy = "location")
-    private List<Departments> departments;
-    */
+
 }
 

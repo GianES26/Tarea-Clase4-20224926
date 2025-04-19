@@ -10,6 +10,10 @@
 <div th:replace="fragments/navbar :: menu"></div>
 
 <h1>Lista de Empleados</h1>
+<h2>Para usar la busqueda, escriba lo que desea encontrar por nombre, apellido, puesto o departamento y
+    pulse Enter, si desea eliminar los filtros no escriba nada y pulse Enter</h2>
+<h3>Nota: por algun motivo pasando el registro 178 se cortan los datos,</h3>
+<h3>pero al buscar un registro en especifico aparecerán todos, probablemente paginación</h3>
 
 <form method="post" th:action="@{/employee/buscar}">
     <input type="text" class="form-control mb-3" name="searchField" placeholder="Buscar por nombre, apellido, puesto, depto o ciudad"/>
