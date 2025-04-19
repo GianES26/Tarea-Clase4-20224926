@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte de Estadísticas</title>
+</head>
+<body>
+
+
+<!-- Incluye el menú -->
+<div th:replace="fragments/navbar :: menu"></div>
+
+<h1>Reporte de Estadísticas</h1>
+
+<h2>Empleados con salario mayor a 15000</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Puesto</th>
+        <th>Inicio</th>
+        <th>Fin</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="e : ${empleadosSalario}">
+        <td th:text="${e.firstName}"></td>
+        <td th:text="${e.lastName}"></td>
+        <td th:text="${e.jobTitle}"></td>
+        <td th:text="${#temporals.format(e.startDate, 'yyyy-MM-dd')}"></td>
+        <td th:text="${#temporals.format(e.endDate, 'yyyy-MM-dd')}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Departamentos agrupados por país y ciudad (más de 3 empleados)</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>País</th>
+        <th>Ciudad</th>
+        <th>Cantidad de Departamentos</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="d : ${departamentosPorPaisYCiudad}">
+        <td th:text="${d.pais}"></td>
+        <td th:text="${d.ciudad}"></td>
+        <td th:text="${d.cantidad}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Gerentes con más de 5 años de experiencia</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Departamento</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Salario</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="g : ${gerentesConExperiencia}">
+        <td th:text="${g.nombreDepartamento}"></td>
+        <td th:text="${g.nombreGerente}"></td>
+        <td th:text="${g.apellidoGerente}"></td>
+        <td th:text="${g.salarioGerente}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

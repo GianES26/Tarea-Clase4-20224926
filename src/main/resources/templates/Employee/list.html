@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Empleados</title>
+</head>
+<body>
+
+
+<!-- Incluye el menú -->
+<div th:replace="fragments/navbar :: menu"></div>
+
+<h1>Lista de Empleados</h1>
+
+<form method="post" th:action="@{/employee/buscar}">
+    <input type="text" class="form-control mb-3" name="searchField" placeholder="Buscar por nombre, apellido, puesto, depto o ciudad"/>
+</form>
+
+<a th:href="@{/employee/nuevo}">Crear nuevo empleado</a>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Puesto</th>
+        <th>Departamento</th>
+        <th>Ciudad</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="e : ${listaEmpleados}">
+        <td th:text="${e.id}"></td>
+        <td th:text="${e.firstName}"></td>
+        <td th:text="${e.lastName}"></td>
+        <td th:text="${e.job.jobTitle}"></td>
+        <td th:text="${e.department.departmentName}"></td>
+        <td th:text="${e.department.location.city}"></td>
+        <td>
+            <a th:href="@{/employee/editar(id=${e.id})}">Editar</a> |
+            <a th:href="@{/employee/borrar(id=${e.id})}" onclick="return confirm('¿Estás seguro de eliminar?')">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

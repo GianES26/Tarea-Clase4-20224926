@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Historial de Empleados</title>
+</head>
+<body>
+
+
+<!-- Incluye el menú -->
+<div th:replace="fragments/navbar :: menu"></div>
+
+<h1>Historial de Empleados</h1>
+
+<form action="/history/buscar" method="post">
+  <input type="text" name="searchField" placeholder="Buscar por nombre, apellido, puesto o departamento" />
+  <button type="submit">Buscar</button>
+</form>
+
+<table>
+  <thead>
+  <tr>
+    <th>Empleado</th>
+    <th>Puesto</th>
+    <th>Departamento</th>
+    <th>Fecha de Inicio</th>
+    <th>Fecha de Fin</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="jobHistory : ${historial}">
+    <td th:text="${jobHistory.employee.firstName} + ' ' + ${jobHistory.employee.lastName}"></td>
+    <td th:text="${jobHistory.job.jobTitle}"></td>
+    <td th:text="${jobHistory.department.departmentName}"></td>
+    <td th:text="${jobHistory.id.startDate}"></td>
+    <td th:text="${jobHistory.endDate}"></td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
